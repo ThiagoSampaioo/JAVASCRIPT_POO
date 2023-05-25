@@ -9,6 +9,7 @@ const issn = document.querySelector('#issn');
 const dataFab = document.querySelector('#dataFab');
 const editora = document.querySelector('#editora');
 const btnSoli = document.querySelector('.solicitar');
+const fechar = document.querySelector('.fechar');
 const vesBOOK = document.querySelector('.vesBOOK');
 const tbody = document.querySelector('#tbody');
 const modal = document.querySelector('#mymodal');
@@ -36,7 +37,6 @@ class BOOK{
         }
         this.tableList();
         this.handleClear();
-        this.stopTimer(intervals);
     }
     load(){
         let book = {}
@@ -64,6 +64,7 @@ class BOOK{
 
         if(msg != ''){
             alert(msg);
+            fechar.click();
             return false;
         }
         return true;
@@ -131,6 +132,7 @@ class BOOK{
         }
     }
     handleClear(){
+        this.stopTimer(intervals);
         vinculo.value = 'Selecione';
         titulo.value = '';
         autor.value = '';
@@ -138,10 +140,8 @@ class BOOK{
         issn.value = ''; 
         dataFab.value = '';
         editora.value = '';
-
         btnSoli.innerText= 'Solicitar';
         this.editID = null;
-        this.stopTimer(intervals);
     }
     handleDelete(id){
         if(confirm('Deseja realmente deletar o livro solicitado?')){
@@ -181,29 +181,31 @@ class BOOK{
         }
     }
     startTimer(duration, display){
+        
         var timer = duration, minutes, seconds;
-
-       let interval = setInterval(()=>{
-            minutes= parseInt(timer / 60, 10);
-            seconds= parseInt(timer % 60, 10);
-            minutes= minutes < 10 ? '0' + minutes : minutes;
-            seconds= seconds < 10 ? '0' + seconds : seconds;
-
-            display.innerHTML = `${minutes} : ${seconds}`;
-            timer-=1;
-            if(timer<0){
-                this.stopTimer(interval);
-                vinculo.disabled = true;
-                titulo.disabled = true;
-                autor.disabled = true;
-                edicao.disabled = true;
-                issn.disabled = true;
-                dataFab.disabled = true;
-                editora.disabled = true;
-                alert('formulário esgotado! \n abra novamente para preencher os campos \n ou envie se o formulário estiver completo.');
-            }
-        },1000);
-        intervals = interval;
+        
+            let interval = setInterval(()=>{
+                 minutes= parseInt(timer / 60, 10);
+                 seconds= parseInt(timer % 60, 10);
+                 minutes= minutes < 10 ? '0' + minutes : minutes;
+                 seconds= seconds < 10 ? '0' + seconds : seconds;
+     
+                 display.innerHTML = `${minutes} : ${seconds}`;
+                 timer-=1;
+                 if(timer<0){
+                     this.stopTimer(interval);
+                     vinculo.disabled = true;
+                     titulo.disabled = true;
+                     autor.disabled = true;
+                     edicao.disabled = true;
+                     issn.disabled = true;
+                     dataFab.disabled = true;
+                     editora.disabled = true;
+                     alert('formulário esgotado! \n abra novamente para preencher os campos \n ou envie se o formulário estiver completo.');
+                 }
+             },1000);
+             intervals = interval;
+        
     }
     configurations(){
         this.stopTimer(intervals);
