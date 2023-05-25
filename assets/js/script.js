@@ -14,6 +14,7 @@ const tbody = document.querySelector('#tbody');
 const modal = document.querySelector('#mymodal');
 var display = document.querySelector('.clock');
 var intervals;
+var duration;
 
 
 class BOOK{
@@ -22,6 +23,8 @@ class BOOK{
         this.arrayBook = [];
         this.editID = null;
     }
+
+    
     handleSave(){
         let book = this.load();
         if(this.formValid(book)) {
@@ -203,6 +206,7 @@ class BOOK{
         intervals = interval;
     }
     configurations(){
+        this.stopTimer(intervals);
         display.innerHTML = '60:00'
         vinculo.disabled = false;
         titulo.disabled = false;
@@ -211,13 +215,14 @@ class BOOK{
         issn.disabled = false;
         dataFab.disabled = false;
         editora.disabled = false;
-        var duration = 60 * 60 ; //consersão para segundos
+        duration = 60 * 60 ; //consersão para segundos
         this.startTimer(duration, display);
 }   
     stopTimer(interval){
         clearInterval(interval);
         display.innerHTML = '00:00'
     }
+  
 }
 
 var book = new BOOK();
