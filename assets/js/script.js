@@ -14,117 +14,6 @@ const tbody = document.querySelector('#tbody');
 const modal = document.querySelector('#mymodal');
 var display = document.querySelector('.clock');
 var intervals;
-let items;
-let id;
-
-const getItensDB = () => JSON.parse(localStorage.getItem('dbfunc')) ?? [];
-const setItensDB = () => localStorage.setItem('dbfunc', JSON.stringify(items));
-
-// function loadItens(){
-//     items =  getItensDB();
-//     tbody.innerHTML = '';
-//     items.forEach((item, index)=> {
-//         insertItem(item, index);
-//     });
-// }
-
-
-
-// function insertItem(item, index){
-//     let tr = document.createElement('tr');
-//     tr.innerHTML=`
-//     <td>${item.vinculo}</td>
-//     <td>${item.titulo}</td>
-//     <td>${item.autor}</td>
-//     <td>${item.edicao}</td>
-//     <td>${item.issn}</td>
-//     <td>${item.dataFab}</td>
-//     <td>${item.editora}</td>
-//     <td class="acao">
-//     <button onclick="editItem(${index})"><i class='bx bx-edit'></i> </button>
-//     </td>
-//     <td class="acao">
-//     <button onclick="deleteItem(${index})"><i class='bx bx-trash'></i> </button>
-//     </td>
-//     `;
-//     tbody.appendChild(tr);
-// }
-
-// function editItem(index){
-//     openModal(true,index);
-// }
-// function deleteItem(index){
-//     items.splice(index, 1);
-//     setItensDB();
-//     loadItens();
-// }
-
-// function openModal(edit = false, index=0){
-//     modal.classList.add('active');
-
-//     modal.onclick = e => {
-//         if(e.target.className.indexOf('modal-container') !== -1){
-//             modal.classList.remove('active');
-//         }
-//     }
-//     if(edit){
-//         vinculo.value = items[index].vinculo;
-//         titulo.value = items[index].titulo;
-//         autor.value = items[index].autor;
-//         edicao.value = items[index].edicao;
-//         issn.value = items[index].issn;
-//         dataFab.value = items[index].dataFab;
-//         editora.value = items[index].editora;
-//         id =  index;
-//     }else{
-//         vinculo.value = '';
-//         titulo.value = '';
-//         autor.value = '';
-//         edicao.value = '';
-//         issn.value = ''; 
-//         dataFab.value = '';
-//         editora.value = '';
-//     }
-//     btnSoli.onclick = e => {
-//         if( vinculo.value == '' || titulo.value == '' || autor.value == '' || 
-//         edicao.value == '' || issn.value == '' || dataFab.value == ''|| editora.value == ''){
-//             return
-//         }
-//         e.preventDefault();
-//         if(id !== undefined){
-//             items[id].vinculo = vinculo.value;
-//             items[id].titulo = titulo.value;
-//             items[id].autor = autor.value;
-//             items[id].edicao = edicao.value;
-//             items[id].issn = issn.value;
-//             items[id].dataFab = dataFab.value;
-//             items[id].editora = editora.value;
-//         }else{
-//             items.push({
-//                 'vinculo': vinculo.value, 'titulo': titulo.value, 'autor':autor.value,
-//                 'edicao': edicao.value, 'issn': issn.value, 'dataFab': dataFab, 'editora': editora.value
-//             })
-//         }
-//         setItensDB()
-//         modal.classList.remove('active');
-//         loadItens();
-//         id=undefined;
-//     }
-//}
-
-
-// const test = () =>{
-// console.log(vinculo.value)
-// console.log(titulo.value) 
-// console.log(autor.value) 
-// console.log(edicao.value) 
-// console.log(issn.value) 
-// console.log(dataFab.value)
-// console.log(editora.value)
-// }
-
-
-
 
 
 class BOOK{
@@ -132,13 +21,6 @@ class BOOK{
         this.id=1;
         this.arrayBook = [];
         this.editID = null;
-        // this.vinculo.value = '';
-        // this.titulo.value = '';
-        // this.autor.value = '';
-        // this.edicao.value = '';
-        // this.issn.value = ''; 
-        // this.dataFab.value = '';
-        // this.editora.value = '';
     }
     handleSave(){
         let book = this.load();
