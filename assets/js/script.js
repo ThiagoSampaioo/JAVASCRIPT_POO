@@ -1,5 +1,3 @@
-//  $('#myModal').modal(options)
-
 
 const vinculo = document.querySelector('.form-select');
 const titulo = document.querySelector('#titulo');
@@ -12,7 +10,7 @@ const btnSoli = document.querySelector('.solicitar');
 const fechar = document.querySelector('.fechar');
 const vesBOOK = document.querySelector('.vesBOOK');
 const tbody = document.querySelector('#tbody');
-const modal = document.querySelector('#mymodal');
+const modal = document.querySelector('.modal-container');
 var display = document.querySelector('.clock');
 var intervals;
 var duration;
@@ -37,6 +35,8 @@ class BOOK{
         }
         this.tableList();
         this.handleClear();
+        fechar.click();
+
     }
     load(){
         let book = {}
@@ -63,6 +63,8 @@ class BOOK{
         if(book.editora === '') msg += 'Campo editora não preenchido .\n';
 
         if(msg != ''){
+           
+
             alert(msg);
             fechar.click();
             return false;
