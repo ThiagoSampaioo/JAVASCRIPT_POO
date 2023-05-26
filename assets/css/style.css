@@ -1,0 +1,41 @@
+.responsive-table{
+    overflow-x: auto;
+    overflow-y: auto;
+}
+@media (max-width: 880px) {
+    .content{
+        grid-template-columns: 1fr;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        
+    }
+    .content button{
+        font-size: 1rem;
+
+    }
+    .content p {
+        
+        display: flex;
+        flex-flow: column wrap;
+        align-content: stretch;
+        justify-content: center;
+        
+    }
+    img{
+        display: none;
+      
+    }
+    .div{
+        width: 100%;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    .content h3{
+        font-size: 1.5rem;
+        
+    }
+    
+}
